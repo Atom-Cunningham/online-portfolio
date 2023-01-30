@@ -5,9 +5,6 @@
 */
 
 //imports
-import React from 'react';
-
-
 const express = require("express");
 const router = express.Router();
 const cors = require("cors");
@@ -25,6 +22,7 @@ app.use(express.static(path.join(__dirname, '/public')));
 module.exports = app;
 
 console.log("foobar");
+
 
 //email setup
 const contactEmail = nodemailer.createTransport({
@@ -45,49 +43,3 @@ contactEmail.verify((error) => {
         console.log("recipient email address verified");
     }
 });
-
-
-class Mailer extends React.Component
-{
-    constructor(props){
-        super(props);
-        this.state = {
-            name: '',
-            email: '',
-            phone: '',
-            message: ''
-        }
-    }
-    async handleSubmit(){
-        const nameField = this.state.name;
-        const emailField = this.state.email;
-        const phoneField = this.state.phone;
-        const messageField = this.state.message;
-        let details = {
-            name: nameField,
-            email: emailField,
-            message: messageField,
-        };
-        let response = await fetch("http://localhost:5000/contact", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json;charset=utf-8",
-            },
-            body: JSON.stringify(details),
-        });
-        let result = await response.json();
-        alert(result.status);
-    };
-
-    render(){
-        return(
-            <div className = "Mailer">
-                <head>the mailer will be inserted here</head>
-            </div>
-        );
-    }
-}
-
-
-// TODO swap to react export
-export default Mailer;

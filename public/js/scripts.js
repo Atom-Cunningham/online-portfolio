@@ -13,30 +13,6 @@ window.addEventListener('DOMContentLoaded', event => {
     // TODO define async
 });
 
-
-
-
-const handleSubmit = async (e) => {
-    e.preventDefault();
-    console.log("sending email");
-    const { name, email, message } = e.target.elements;
-    let details = {
-      name: name.value,
-      email: email.value,
-      message: message.value,
-    };
-    let response = await fetch("http://localhost:5000/contact", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json;charset=utf-8",
-      },
-      body: JSON.stringify(details),
-    });
-    console.log("sent email");
-    let result = await response.json();
-    alert(result.status);
-};
-
 // defines the navigation bar to shrink when the page is
 // not at the top, and shrink when it is
 function navBarControl(){

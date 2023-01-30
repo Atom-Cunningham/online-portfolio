@@ -1,16 +1,28 @@
-const NodePolyfillPlugin = require('node-polyfill-webpack-plugin')
+const webpack = require('webpack'); 
+module.exports = function override(config) { 
+		const fallback = config.resolve.fallback || {}; 
+		Object.assign(fallback, { 
+    	"crypto": require.resolve("crypto-browserify"), 
+      "stream": require.resolve("stream-browserify"), 
+      "assert": require.resolve("assert"), 
+      "http": require.resolve("stream-http"), 
+      "https": require.resolve("https-browserify"), 
+      "os": require.resolve("os-browserify"), 
+      "url": require.resolve("url"),
 
-module.exports = function override(config, env) {
-  // do stuff with the webpack config...
-  console.log("running react-app-rewired");
-  config.resolve.fallback = {
-    fs: false,
-    net: false,
-    tls: false,
-    dns: false,
-    child_process: false,
-    async_hooks: false,
-  };
-  config.plugins.push(new NodePolyfillPlugin());
-  return config;
-}
+      "fs": false,
+      "zlib": false,
+      "tls": require.resolve("tls"),
+      "net": require.resolve("net"),
+      
+
+
+      }) 
+   config.resolve.fallback = fallback; 
+   config.plugins = (config.plugins || []).concat([ 
+   	new webpack.ProvidePlugin({ 
+    	process: 'process/browser', 
+      Buffer: ['buffer', 'Buffer'] 
+    }) 
+   ]) 
+   return config; }
