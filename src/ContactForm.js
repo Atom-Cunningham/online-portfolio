@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 class ContactForm extends React.Component
 {
@@ -10,7 +10,8 @@ class ContactForm extends React.Component
             phone: '',
             message: ''
         }
-    }   
+    }
+
     async handleSubmit(){
         const nameField = this.state.name;
         const emailField = this.state.email;
@@ -22,7 +23,7 @@ class ContactForm extends React.Component
             phone: phoneField,
             message: messageField,
         };
-        let response = await fetch("http://localhost:5000/contact", {
+        let response = await fetch("http://localhost:3000/contact", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json;charset=utf-8",
