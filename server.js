@@ -1,11 +1,18 @@
 //imports
 const express = require("express");
+//import express from 'express';
 const router = express.Router();
 const cors = require("cors");
+//import cors from 'cors';
 const nodemailer = require("nodemailer");
+//import nodemailer from 'nodemailer';
 
 const path = require("path");
+//import path from 'path';
 require("dotenv").config();
+//import dotenv from 'dotenv';
+//dotenv.config();
+
 
 //server setup
 const PORT = 3000;
@@ -13,13 +20,10 @@ const app = express();
 app.use(express.json());
 app.use("/", router);
 app.use(express.static("public"));
-app.listen(PORT, ()=> console.log("server running"));
 
-//render
-require('./index.js');
 
-//exports
-module.exports = app;
+
+app.listen(PORT, ()=> console.log(`server running on port ${PORT}`));
 
 console.log("foobar");
 
@@ -32,8 +36,8 @@ const contactEmail = nodemailer.createTransport({
     secure: true,
     
     auth: {
-        user: process.env.REACT_APP_EMAIL_ADDRESS,
-        pass: process.env.REACT_APP_EMAIL_PASSWORD,
+        user: process.env.EMAIL_ADDRESS,
+        pass: process.env.EMAIL_PASSWORD,
     }
 });
 
@@ -47,6 +51,7 @@ contactEmail.verify((error) => {
 });
 
 router.post("/contact", (req, res) => {
+    console.log("recieved contact request");
     const name = req.body.name;
     const email = req.body.email;
     const message = req.body.message; 

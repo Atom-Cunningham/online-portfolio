@@ -1,4 +1,4 @@
-import React from "react";
+const React = require("react");
 
 class ContactForm extends React.Component
 {
@@ -23,7 +23,8 @@ class ContactForm extends React.Component
             phone: phoneField,
             message: messageField,
         };
-        let response = await fetch("http://localhost:3000/contact", {
+        console.log("sending post request");
+        let response = await fetch("/contact", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json;charset=utf-8",
@@ -35,33 +36,26 @@ class ContactForm extends React.Component
     };
 
     render(){
+        this.handleSubmit();
         return(
             <div className="row justify-content-center">
                 <div className="col-lg-8 col-xl-7">
                     <form id="contactForm">
-                        
-                        {/*Name input field*/}
                         <InputField id= "name"
                                     type= "name"
                                     placeholder= "Enter your name..."
                                     label= "Full name"
                                     errorMessage= "A name is required." />
-                        
-                        {/*Email input field*/}
                         <InputField id= "email"
                                     type= "email"
                                     placeholder= "name@example.com"
                                     label= "Email address"
                                     errorMessage= "A valid email address is required." />
-                        
-                        {/*Phone number input field*/}
                         <InputField id= "phone"
                                     type= "tel"
                                     placeholder= "(123) 456-7890"
                                     label= "Phone number"
                                     errorMessage= "A phone number is required." />
-                        
-                        {/*Message input field*/}
                         <InputField id= "message"
                                     type= "text"
                                     placeholder= "Enter your message here..."
