@@ -1,19 +1,32 @@
 import './App.css';
-import './ContactForm.js';
+import React from "react";
 import IconDivider from './IconDivider';
 import ContactForm from './ContactForm.js';
+import Portfolio from './Portfolio.js'
 
 
 function App() {
-  console.log("rendering App...");
   return (
     <div className="App">
-      <section className="page-section" id="contact">
-        <h2 className="page-section-heading text-center text-uppercase text-secondary mb-0">Contact Me</h2>
-        <IconDivider/>
+      <Section class = "page-section portfolio" id="portfolio">
+        <IconDivider title="Portfolio"/>
+        <Portfolio/>
+      </Section>
+      <Section class="page-section" id="contact">
+        <IconDivider title="Contact Me"/>
         <ContactForm/>
-      </section>
+      </Section>
     </div>
+  );
+}
+
+function Section(props){
+  return(
+    <section className = {props.class}  id = {props.id}>
+      <div class = "container">
+        {props.children}
+      </div>
+    </section>
   );
 }
 
