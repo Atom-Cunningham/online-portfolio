@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import ModalWindow from './ModalWindow.js';
 import {data} from './PortfolioData.js';
 
@@ -11,21 +11,22 @@ class Portfolio extends React.Component{
         this.state.itemProps = data;
     }
 
+    //<ModalWindow id={obj.modalId} title={obj.title} image={obj.image} text={obj.text} />
     render(){
         //create a list of PortfolioItems
         const itemProps = this.state.itemProps;
         const items = itemProps.map((obj)=> {
-            return( <PortfolioItem key={obj.id} target={obj.target} image={obj.image}/> );
-        });
-        const windows = itemProps.map((obj) => {
-            console.log("doing window " + obj.modalId);
-            return( <ModalWindow id={obj.modalId} title={obj.title} image={obj.image} text={obj.text} />)
+            console.log(obj);
+            console.log("reading the value of props.modalId in portfolio as" + obj.modalId);
+            return( <Fragment key={obj.id}>
+                        <PortfolioItem  target={obj.target} image={obj.image}/>
+                        <ModalWindow modalId={obj.modalId} title={obj.title} image={obj.image} text={obj.text} />
+                    </Fragment> );
         });
         
         return(
             <div class = "row justify-content-center">
                 {items}
-                {windows}
             </div>
         );
     }

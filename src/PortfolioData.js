@@ -46,5 +46,5 @@ export const data = [
         target: "#portfolioModal6", 
         image: "assets/img/portfolio/submarine.png",
         text: "asdf",
-    },  
+    }
 ];
