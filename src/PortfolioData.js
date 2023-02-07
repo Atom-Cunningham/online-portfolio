@@ -4,8 +4,8 @@ export const data = [
         id: 1,
         modalId: "portfolioModal1",
         target: "#portfolioModal1",
-        image: "assets/img/portfolio/cabin.png",
-        text: "asdf"
+        image: "assets/img/portfolio/cake.png",
+        text: "This is now the first portfolio text"
     },
     {
         title: "cake",

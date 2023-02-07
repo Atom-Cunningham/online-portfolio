@@ -11,13 +11,10 @@ class Portfolio extends React.Component{
         this.state.itemProps = data;
     }
 
-    //<ModalWindow id={obj.modalId} title={obj.title} image={obj.image} text={obj.text} />
     render(){
         //create a list of PortfolioItems
         const itemProps = this.state.itemProps;
         const items = itemProps.map((obj)=> {
-            console.log(obj);
-            console.log("reading the value of props.modalId in portfolio as" + obj.modalId);
             return( <Fragment key={obj.id}>
                         <PortfolioItem  target={obj.target} image={obj.image}/>
                         <ModalWindow modalId={obj.modalId} title={obj.title} image={obj.image} text={obj.text} />
@@ -25,21 +22,23 @@ class Portfolio extends React.Component{
         });
         
         return(
-            <div class = "row justify-content-center">
+            <div className = "row justify-content-center">
                 {items}
             </div>
         );
     }
 }
 
+// an image which has an onclick defined in bootstrap,
+// which toggles props.target modal box aria show property
 function PortfolioItem(props){
     return(
-        <div class="col-md-6 col-lg-4 mb-5">
-            <div class="portfolio-item mx-auto" data-bs-toggle="modal" data-bs-target={props.target}>
-                <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
-                    <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
+        <div className="col-md-6 col-lg-4 mb-5">
+            <div className="portfolio-item mx-auto" data-bs-toggle="modal" data-bs-target={props.target}>
+                <div className="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
+                    <div className="portfolio-item-caption-content text-center text-white"><i className="fas fa-plus fa-3x"></i></div>
                 </div>
-                <img class="img-fluid" src={props.image} alt="..." />
+                <img className="img-fluid" src={props.image} alt="..." />
             </div>
         </div>
     );

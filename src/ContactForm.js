@@ -23,7 +23,7 @@ class ContactForm extends React.Component
             phone: phoneField,
             message: messageField,
         };
-        console.log("sending post request");
+        console.log("sending contact form request");
         let response = await fetch("/contact", {
             method: "POST",
             headers: {
@@ -36,7 +36,7 @@ class ContactForm extends React.Component
     };
 
     render(){
-        this.handleSubmit();
+        //this.handleSubmit();
         return(
             <div className="row justify-content-center">
                 <div className="col-lg-8 col-xl-7">
