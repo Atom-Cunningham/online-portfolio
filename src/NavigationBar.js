@@ -3,13 +3,16 @@ import React from "react";
 // a navigation bar with behavior defined in bootstrap
 // props: string id, string title, object[] menuItems
 function NavigationBar(props){
-    //add scrollSpy
+    //resize on scroll and add scrollSpy, 
+    //TODO: replace with a hook
     React.useEffect(()=>{
-        const script = document.createElement('script');
-        script.src = 'js/navigationBarControl.js';
-        console.log(script.src);
-        script.async = true;
-        document.body.appendChild(script);
+        navbarShrink();
+        window.addEventListener("scroll", navbarShrink);
+        //scrollSpy
+        const navBarControl = document.createElement('script');
+        navBarControl.src = 'js/scrollSpy.js';
+        navBarControl.async = true;
+        document.body.appendChild(navBarControl);
     },[]);
     //create list of menu items
     const menuItems = props.menuItems.map((obj,i)=> {
@@ -42,5 +45,21 @@ function NavTarget(props){
         </li>
     );
 }
+
+// Navbar shrink function
+function  navbarShrink() {
+    const navbarCollapsible = document.body.querySelector('#mainNav');
+    //console.log(`collapsable ${navbarCollapsible}, scrollY ${window.scrollY}`);
+    //console.log(navbarCollapsible.classList);
+    if (!navbarCollapsible) {
+        return;
+    }
+    if (window.scrollY === 0) {
+        navbarCollapsible.classList.remove('navbar-shrink')
+    } else {
+        navbarCollapsible.classList.add('navbar-shrink')
+    }
+};
+
 
 export default NavigationBar;

@@ -6,7 +6,7 @@ import Masthead from './Masthead';
 import Portfolio from './Portfolio.js'
 import About from './About';
 import ContactForm from './ContactForm.js';
-import Foot from './Foot.js';
+import Foot from './Footer.js';
 
 
 

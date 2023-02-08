@@ -2,7 +2,7 @@ import React from "react";
 
 // footer, contains location, social media, and website info
 //
-function Foot(props){
+function Footer(props){
     return( 
         <div>
             <footer className="footer text-center">
@@ -45,4 +45,4 @@ function Copyright(props){
         </div>);
 }
 
-export default Foot;
+export default Footer;

@@ -7,7 +7,7 @@ import Masthead from './Masthead';
 import Portfolio from './Portfolio.js'
 import About from './About';
 import ContactForm from './ContactForm.js';
-import Foot from './Foot.js';
+import Footer from './Footer.js';
 
 import ReactDOM from 'react-dom/client';
 import reportWebVitals from './reportWebVitals';
@@ -46,7 +46,7 @@ root.render(
         <ContactForm/>
       </Section>
       
-      <Foot/>
+      <Footer/>
     </div>
   </React.StrictMode>
 );
@@ -61,6 +61,14 @@ function Section(props){
   );
 }
 
+/*
+const navBarControl = document.createElement('script');
+navBarControl.src = 'js/navigationBarControl.js';
+console.log(navBarControl.src);
+navBarControl.async = true;
+document.body.appendChild(navBarControl);
+
+*/
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))

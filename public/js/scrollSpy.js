@@ -4,41 +4,6 @@
 * Licensed under MIT (https://github.com/StartBootstrap/startbootstrap-freelancer/blob/master/LICENSE)
 */
 
-// on Load
-/*
-window.addEventListener('DOMContentLoaded', event => {
-    navBarControl();
-    // TODO define async
-});
-*/
-
-// defines the navigation bar to shrink when the page is
-// not at the top, and shrink when it is
-
-// Shrink the navbar 
-navbarShrink();
-
-// Shrink the navbar when page is scrolled
-document.addEventListener('scroll', navbarShrink());
-
-// add bootstrap scroll spy
-addSpy();
-
-// Navbar shrink function
-function  navbarShrink() {
-    const navbarCollapsible = document.body.querySelector('#mainNav');
-    if (!navbarCollapsible) {
-        return;
-    }
-    if (window.scrollY === 0) {
-        navbarCollapsible.classList.remove('navbar-shrink')
-    } else {
-        navbarCollapsible.classList.add('navbar-shrink')
-    }
-
-};
-
-
 // sets up #targets for the scrollspy
 // and applies event listeners for click,
 // and for scrolling past the targeted components.
@@ -68,4 +33,6 @@ function addSpy(){
     });
 }
 
+// add bootstrap scroll spy
+addSpy();
 

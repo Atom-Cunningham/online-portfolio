@@ -78,4 +78,8 @@ function InputField(props){
     );
 }
 
+function SubmitButton(props){
+    
+}
+
 export default ContactForm;
